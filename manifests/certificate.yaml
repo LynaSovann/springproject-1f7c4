@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: springproject-1f7c4-certificate
+  namespace: springproject-1f7c4
+spec:
+  secretName: springproject-1f7c4-secret-tls
+  commonName: ry-ta2647-springproject.assessify.org
+  dnsNames:
+  - ry-ta2647-springproject.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
