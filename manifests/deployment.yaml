@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springproject-1f7c4-deployment
+  labels:
+    app: springproject-1f7c4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springproject-1f7c4
+  template:
+    metadata:
+      labels:
+        app: springproject-1f7c4
+    spec:
+      containers:
+        - name: springproject-1f7c4-container
+          image: pipejet/springproject-1f7c4:latest
+          ports:
+            - containerPort: 8080
