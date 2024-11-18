@@ -1,0 +1,28 @@
+ apiVersion: networking.k8s.io/v1
+ kind: Ingress
+ metadata:
+   name: springproject-1f7c4-https-ingress
+   namespace: springproject-1f7c4
+   annotations:
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/proxy-body-size: 8m    
+     nginx.ingress.kubernetes.io/rewrite-target: /
+ spec:
+   ingressClassName: nginx
+   tls:
+     - hosts:
+         - ry-ta2647-springproject.assessify.org
+       secretName: springproject-1f7c4-secret-tls
+   rules:
+     - host: ry-ta2647-springproject.assessify.org
+       http:
+         paths:
+           - path: /
+             pathType: Prefix
+             backend:
+               service:
+                 name: springproject-1f7c4-service
+                 port:
+                   number: 8200
+ 
